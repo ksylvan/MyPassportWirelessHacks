@@ -14,9 +14,9 @@ use your device's IP address to login using your favorite ssh or scp client.
 What's Here:
 ------------
 
-* backup/ Instructions and scripts for using your MyPW for automated backups.
+* [backup/](https://github.com/ksylvan/MyPassportWirelessHacks/tree/master/backup) Instructions and scripts for using your MyPW for automated backups.
 
-* ncat/ How to install ncat on your device to route traffic.
+* [ncat/](https://github.com/ksylvan/MyPassportWirelessHacks/tree/master/ncat) How to install ncat on your device to route traffic.
 
 Contact Me
 ----------
