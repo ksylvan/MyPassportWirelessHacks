@@ -195,7 +195,7 @@ From my laptop:
      $ ncat --sh-exec "ssh root@AA.BB.CC.DD ./ncat 192.168.1.254 80" --keep-open -l 8080
 
 This uses the ncat I copied over ("./ncat") to connect to
-192.168.1.254:80 which is the local are network address of the web
+192.168.1.254:80 which is the local area network address of the web
 interface for the uVerse gateway and makes it available on my laptop at localhost:8080.
 
 Then I use a browser and connect to localhost:8080 and I can
@@ -203,13 +203,14 @@ administer the uVerse gateway.
 
 In fact, using similar commands, I can access all sorts of internal resources:
 
-Suppose I have a Linux box in my internal network at 192.168.2.2. From
-my laptop, from an external address, I can do this:
+Suppose I have a Linux box in my internal network at 192.168.2.2.
+
+From my laptop, from an external address, I can do this:
 
     $ ncat --sh-exec "ssh root@AA.BB.CC.DD ./ncat 192.168.2.2 22" --keep-open -l 1122
 
-And then, I can use the -p option to ssh to go ahead and login to that machine:
+And then, I can use the -p option of ssh to login to that machine:
 
-    $ $ ssh -o StrictHostKeyChecking=false -p 1122 root@localhost
+    $ ssh -o StrictHostKeyChecking=false -p 1122 root@localhost
     Warning: Permanently added '[localhost]:1122' (ECDSA) to the list of known hosts.
 
