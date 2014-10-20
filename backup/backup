@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# Author: Kayvan Sylvan
+#
+# Automated rsync+ssh backup from WD My Passport Wireless device
+#
+cd $(dirname $0)
+my_script=$(pwd)/$(basename $0)
+
+usage() { echo "Usage: $0 [setup | doit]"; exit 0; }
+
+if [ $# -ne 1 ]
+then
+  usage
+  exit 0
+fi
+
+# Change these for your setup
+#
+SRC=192.168.1.101:/DataVolume/
+DESTDIR=/DataVolume/Backup/mwp_backup
+LOG=/DataVolume/Backup/rsync.log
+WHEN="0,30 * * * *" # cron specification (2AM every day)
+CRON_INIT=$(ls /etc/init.d/*cron*)
+MY_CRON_FILENAME="backup_my_data"
+RSYNC_OPTS="-avz -h --progress"
+
+if [ ! -d $DESTDIR ]; then mkdir $DESTDIR; fi
+
+case "$1" in
+setup)
+  echo "$WHEN root $my_script doit" > /etc/cron.d/$MY_CRON_FILENAME
+  $CRON_INIT restart
+  ;;
+doit)
+  START=$(date)
+  echo "About to rsync $SRC to $DESTDIR" >> $LOG
+  rsync $RSYNC_OPTS root@$SRC $DESTDIR >> $LOG 2>&1
+  echo "STARTED at $START - ENDED at $(date)" >> $LOG
+  ;;
+*)
+  usage;;
+esac

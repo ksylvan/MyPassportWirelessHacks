@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Author: Kayvan Sylvan <kayvansylvan@gmail.com>
+#
+
+if [ $# -ne 1 ]; then echo "Usage: $0 dirname"; exit 1; fi
+if [ ! -d $HOME/x-tools ]; then echo "Build crosstool-ng first!"; exit 2; fi
+
+cd $HOME/x-tools
+
+x="$1"
+
+if [ ! -d $x ]; then echo "No directory $x in ~/x-tools!"; exit 3; fi
+
+list=$(ls $x/bin)
+
+echo Setting up bin directory.
+rm -rf bin; mkdir bin
+cd bin
+for i in $list
+do
+  new=$(echo $i | sed "s/$x-//")
+  echo ln -s ../$x/bin/$i $new
+  ln -s ../$x/bin/$i $new
+done
+echo Done.
