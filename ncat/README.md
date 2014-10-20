@@ -1,6 +1,6 @@
 # Download the binary
 
-If you just want to grab the binary, it's in the binary/ subdirectory
+If you just want to grab the binary, it's in the [binary/](https://github.com/ksylvan/MyPassportWirelessHacks/tree/master/ncat/binary) subdirectory
 here.  Do so at your own risk. It works for me, but I make no
 guarantees that it won't harm your device.
 
