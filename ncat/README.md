@@ -59,6 +59,8 @@ Based on that information, I set up my toolchain in the menuconfig as follows:
 * Linux kernel version ---> select 2.6.31.14
 * C-library ---> C library ---> select eglibc
 * C-library ---> eglibc version ---> select 2_15
+* C-Compiler ---> select Show linaro versions and then
+* C-Compiler ---> gcc version ---> select linaro-4.7-2014.01
 
 After you do all the above, you can exit all the way out of menuconfig,
 which will write your .config file.

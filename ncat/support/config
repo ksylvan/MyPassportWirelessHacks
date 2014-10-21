@@ -1,9 +1,10 @@
 #
 # Automatically generated make config: don't edit
 # crosstool-NG 1.20.0 Configuration
-# Mon Oct 20 08:48:17 2014
+# Tue Oct 21 11:10:38 2014
 #
 CT_CONFIGURE_has_xz=y
+CT_CONFIGURE_has_cvs=y
 CT_CONFIGURE_has_svn=y
 CT_MODULES=y
 
@@ -37,7 +38,9 @@ CT_STRIP_ALL_TOOLCHAIN_EXECUTABLES=y
 # CT_FORCE_DOWNLOAD is not set
 CT_CONNECT_TIMEOUT=10
 # CT_ONLY_DOWNLOAD is not set
-# CT_USE_MIRROR is not set
+CT_USE_MIRROR=y
+# CT_FORCE_MIRROR is not set
+CT_MIRROR_BASE_URL="http://crosstool-ng.org/mirrors/"
 
 #
 # Extracting
@@ -153,6 +156,12 @@ CT_ARCH_ENDIAN="little"
 CT_ARCH_FLOAT_AUTO=y
 # CT_ARCH_FLOAT_SOFTFP is not set
 CT_ARCH_FLOAT="auto"
+# CT_ARCH_ALPHA_EV4 is not set
+# CT_ARCH_ALPHA_EV45 is not set
+# CT_ARCH_ALPHA_EV5 is not set
+# CT_ARCH_ALPHA_EV56 is not set
+# CT_ARCH_ALPHA_EV6 is not set
+# CT_ARCH_ALPHA_EV67 is not set
 
 #
 # arm other options
@@ -385,7 +394,7 @@ CT_LIBC_GLIBC_MIN_KERNEL="2.6.31.14"
 # C compiler
 #
 CT_CC="gcc"
-CT_CC_VERSION="4.7.3"
+CT_CC_VERSION="linaro-4.7-2014.01"
 CT_CC_CORE_PASSES_NEEDED=y
 CT_CC_CORE_PASS_1_NEEDED=y
 CT_CC_CORE_PASS_2_NEEDED=y
@@ -398,9 +407,9 @@ CT_CC_GCC_SHOW_LINARO=y
 # CT_CC_V_4_8_2 is not set
 # CT_CC_V_4_8_1 is not set
 # CT_CC_V_4_8_0 is not set
-# CT_CC_V_linaro_4_7 is not set
+CT_CC_V_linaro_4_7=y
 # CT_CC_V_4_7_4 is not set
-CT_CC_V_4_7_3=y
+# CT_CC_V_4_7_3 is not set
 # CT_CC_V_4_7_2 is not set
 # CT_CC_V_4_7_1 is not set
 # CT_CC_V_4_7_0 is not set
