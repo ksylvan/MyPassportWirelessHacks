@@ -153,8 +153,8 @@ Grab the nmap sources:
 
     svn co https://svn.nmap.org/nmap
     cd nmap
-    PATH=~/x-tools/bin:$PATH
-    ./configure --host=arm-linux --with-pcap=null
+    PATH=~/x-tools/arm-unknown-linux-gnueabi/bin:$PATH
+    ./configure --host=arm-unknown-linux-gnueabi --with-pcap=null
     cd libpcap
     make
     cd ../ncat/
@@ -165,15 +165,15 @@ Now you have a binary that will run on your My Passport Wireless!
     $ file ncat
     ncat: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.31, not stripped
     $ ls -l ncat
-    -rwxrwxr-x. 1 ksylvan ksylvan 1189971 Oct 20 13:48 ncat
+    -rwxrwxr-x. 1 ksylvan ksylvan 1191443 Oct 21 15:15 ncat
 
 Let's make it smaller:
 
-    $ strip ncat
+    $ arm-unknown-linux-gnueabi-strip ncat
     $ file ncat
     ncat: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.31, stripped
     $ ls -l ncat
-    -rwxrwxr-x. 1 ksylvan ksylvan 288988 Oct 20 13:49 ncat
+    -rwxrwxr-x. 1 ksylvan ksylvan 288332 Oct 21 15:20 ncat
 
 Now you can copy this binary to your device and run it:
 
