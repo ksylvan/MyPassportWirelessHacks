@@ -1,7 +1,7 @@
 # Download the binary
 
-If you just want to grab the binary, it's in the [binary/](https://github.com/ksylvan/MyPassportWirelessHacks/tree/master/ncat/binary) subdirectory
-here.  Do so at your own risk. It works for me, but I make no
+If you just want to grab a binary, you will find them in the  [binary/](https://github.com/ksylvan/MyPassportWirelessHacks/tree/master/ncat/binary) subdirectory.
+Do so at your own risk. It works for me, but I make no
 guarantees that it won't harm your device.
 
 The rest of this guide walks you through creating your own
@@ -142,7 +142,7 @@ Now you can simply set your PATH to point to ~/x-tools/bin first,
 which will use your cross-compiling toolchain binaries with the usual
 names (like "gcc" and "ld"), obviating the need to modify configure scripts and Makefiles.
 
-## Compiling ncat
+## Alternative 1: Compiling ncat official sources
 
 With our toolchain ready to use, we are now ready to compile ncat.
 
@@ -178,6 +178,34 @@ Now you can copy this binary to your device and run it:
     Linux Home2 3.2.0 #1 Thu Oct 2 16:08:39 CST 2014 armv7l GNU/Linux
     # ./ncat --version
     Ncat: Version 6.47SVN ( http://nmap.org/ncat )
+
+## Alternative 2: Use the busybox applet
+
+The busybox binary that comes with the My Passport Wireless device is missing the "netcat" functionality.
+Theoretically, you could build a full busybox and replace that one, but that seems overly risky to me.
+Instead, we will build a very tiny executable that just incorporates the "netcat" command.
+
+    $ git clone git://busybox.net/busybox.git
+    $ cd busybox
+    $ PATH=~/x-tools/arm-unknown-linux-gnueabi/bin:$PATH
+    $ make allnoconfig
+
+The "make allnoconfig" line makes an empty configuration (includes *no* commands). Next, we select just the
+netcat module.
+
+    $ make menuconfig
+
+Now, select Networking Utilities ---> nc, then tab over to the Exit and get out of the menu config program.
+
+    $ make CROSS_COMPILE=arm-unknown-linux-gnueabi-
+
+This will make busybox, and the size of the executable is *much* smaller than what we saw above:
+
+    $ ls -l busybox
+    -rwxrwxr-x. 1 ksylvan ksylvan 12132 Oct 20 19:24 busybox
+
+Now, copy the file to your My Passport Wireless device and rename it to "nc". This version works like the
+official nmap version of ncat for most simple operations and is about 20 times smaller!
 
 # Tricks with ncat
 
