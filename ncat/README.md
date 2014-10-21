@@ -225,6 +225,8 @@ From my laptop:
 This uses the ncat I copied over ("./ncat") to connect to
 192.168.1.254:80 which is the local area network address of the web
 interface for the uVerse gateway and makes it available on my laptop at localhost:8080.
+The same command would work just fine if you replaced "./ncat" with "./nc" (using the smaller
+busybox alternative).
 
 Then I use a browser and connect to localhost:8080 and I can
 administer the uVerse gateway.
@@ -235,7 +237,7 @@ Suppose I have a Linux box in my internal network at 192.168.2.2.
 
 From my laptop, from an external address, I can do this:
 
-    $ ncat --sh-exec "ssh root@AA.BB.CC.DD ./ncat 192.168.2.2 22" --keep-open -l 1122
+    $ ncat --sh-exec "ssh root@AA.BB.CC.DD ./nc 192.168.2.2 22" --keep-open -l 1122
 
 And then, I can use the -p option of ssh to login to that machine:
 
