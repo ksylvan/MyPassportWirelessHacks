@@ -144,6 +144,8 @@ point to the cross-compiling toolchain binaries:
 Now you can simply set your PATH to point to ~/x-tools/bin first,
 which will use your cross-compiling toolchain binaries with the usual
 names (like "gcc" and "ld"), obviating the need to modify configure scripts and Makefiles.
+This comes in handy for configure scripts that don't have easy ways to support
+cross-compilation toolchains.
 
 ## Alternative 1: Compiling ncat official sources
 
