@@ -29,7 +29,8 @@ install whatever is missing. For my Fedora 20 system, I had to do:
 
 Then go back to the rest of the steps:
 
-    ./configure --enable-local 
+    ./configure --enable-local
+    make
     ./ct-ng menuconfig
 
 At this point, you have to match the crosstool-ng toolchain with your
