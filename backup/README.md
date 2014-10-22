@@ -51,7 +51,7 @@ On your device:
 
     # mkdir /DataVolume/Backup
 
-and put the script as /DataVolume/Backup/backup
+and put the [https://github.com/ksylvan/MyPassportWirelessHacks/raw/master/backup/backup](backup script) as /DataVolume/Backup/backup
 
     $ scp ./backup root@{ip-address-of-your-MyWP}:/DataVolume/Backup/
 
