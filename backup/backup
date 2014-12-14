@@ -40,11 +40,13 @@ run_command()
     if proc_exists $(cat $pidfile)
     then
       echo "$proc still running... Not doing anything." >> $LOG
-    else
-      $cmdline >> $LOG 2>&1 &
-      echo "$!" > $pidfile
+      return 0
     fi
   fi
+
+  $cmdline >> $LOG 2>&1 &
+  echo "$!" > $pidfile
+  wait $!
 }
 
 if [ ! -d $DESTDIR ]; then mkdir $DESTDIR; fi
